@@ -83,6 +83,19 @@ enter_aosp_dir frameworks/base
 apply_gerrit_cl_commit refs/changes/48/1295748/1 6ec651f12a9b67a9d2e41c2fe4d9a71c29d1cf34
 popd
 
+enter_aosp_dir build/soong
+# Replace qti_kernel_headers with generated_kernel_headers
+# * Further avoids edits in CAF repos.
+# Change-Id: I99f9773e3132de7816c921c9d6b09e3e62b68265
+git revert --no-edit b724febb956f8e209936ff5cc36d6c3d6f5370d4
+# Replace device_kernel_headers with generated_kernel_headers
+# * For inline kernel building
+# * Avoids having to make edits to multiple repos, even
+#   if it's a quick replacement
+# Change-Id: I01d4a9b3e24315731efbc8d16882818d20e38e89
+git revert --no-edit eb0cf39b986fc88227e8d8656f79ba80e61b8d79
+popd
+
 # because "set -e" is used above, when we get to this point, we know
 # all patches were applied successfully.
 echo "+++ all patches applied successfully! +++"
