@@ -71,11 +71,11 @@ enter_aosp_dir hardware/interfaces
 apply_gerrit_cl_commit refs/changes/90/1320090/1 3861f7958bec14685cde5b8fee4e590cece76d68
 popd
 
-enter_aosp_dir frameworks/base
-# Fix bug Device that can't support adoptable storage cannot read the sdcard.
-# Change-Id: I7afe5078650fe646e79fced7456f90d4af8a449a
-apply_gerrit_cl_commit refs/changes/48/1295748/1 6ec651f12a9b67a9d2e41c2fe4d9a71c29d1cf34
-popd
+# enter_aosp_dir frameworks/base
+# # Fix bug Device that can't support adoptable storage cannot read the sdcard.
+# # Change-Id: I7afe5078650fe646e79fced7456f90d4af8a449a
+# apply_gerrit_cl_commit refs/changes/48/1295748/1 6ec651f12a9b67a9d2e41c2fe4d9a71c29d1cf34
+# popd
 
 enter_aosp_dir build/soong
 # Replace qti_kernel_headers with generated_kernel_headers
