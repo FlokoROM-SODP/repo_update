@@ -71,23 +71,10 @@ enter_aosp_dir hardware/interfaces
 apply_gerrit_cl_commit refs/changes/90/1320090/1 3861f7958bec14685cde5b8fee4e590cece76d68
 popd
 
-# enter_aosp_dir frameworks/base
-# # Fix bug Device that can't support adoptable storage cannot read the sdcard.
-# # Change-Id: I7afe5078650fe646e79fced7456f90d4af8a449a
-# apply_gerrit_cl_commit refs/changes/48/1295748/1 6ec651f12a9b67a9d2e41c2fe4d9a71c29d1cf34
-# popd
-
-enter_aosp_dir build/soong
-# Replace qti_kernel_headers with generated_kernel_headers
-# * Further avoids edits in CAF repos.
-# Change-Id: I99f9773e3132de7816c921c9d6b09e3e62b68265
-git revert --no-edit b724febb956f8e209936ff5cc36d6c3d6f5370d4
-# Replace device_kernel_headers with generated_kernel_headers
-# * For inline kernel building
-# * Avoids having to make edits to multiple repos, even
-#   if it's a quick replacement
-# Change-Id: I01d4a9b3e24315731efbc8d16882818d20e38e89
-git revert --no-edit eb0cf39b986fc88227e8d8656f79ba80e61b8d79
+enter_aosp_dir packages/modules/Bluetooth
+# revert: Set Bluetooth apex updatable to true
+# Change-Id: I6822814efcc9ad5518bbb56e84df17457812c1ae
+git revert --no-edit f261e756b4f10059b6b90847cd208c95adbd8146
 popd
 
 # because "set -e" is used above, when we get to this point, we know
